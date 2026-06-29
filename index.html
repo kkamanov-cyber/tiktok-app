@@ -1,9 +1,257 @@
 <!DOCTYPE html>
-<html>
-<head><title>TikTok App</title></head>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Trend Agent</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #010101 0%, #1a1a2e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .logo span {
+            background: linear-gradient(90deg, #ff0050, #00f2ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: white; }
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,0,80,0.2);
+            border: 1px solid #ff0050;
+            color: #ff0050;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+        h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        h1 span {
+            background: linear-gradient(90deg, #ff0050, #00f2ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #ff0050, #ff4080);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(255,0,80,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255,0,80,0.6);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #ff0050;
+        }
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.03);
+            flex-wrap: wrap;
+        }
+        .stat h2 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff0050, #00f2ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat p {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.3);
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover { color: white; }
+    </style>
+</head>
 <body>
-<h1>TikTok Agent</h1>
-<a href="terms.html">Terms</a>
-<a href="privacy.html">Privacy</a>
+
+<header>
+    <div class="logo">
+        <span>TikTok Trend Agent</span>
+    </div>
+    <nav>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="badge">🚀 Powered by TikTok API</div>
+    <h1>Grow Your TikTok<br>With <span>AI Trends</span></h1>
+    <p class="subtitle">
+        Analyze trending hashtags, sounds, and content in real-time. 
+        Get AI-powered recommendations to grow your followers automatically.
+    </p>
+    <div class="buttons">
+        <a href="#" class="btn-primary">Connect TikTok Account</a>
+        <a href="#features" class="btn-secondary">Learn More</a>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="stat">
+        <h2>10x</h2>
+        <p>Faster Growth</p>
+    </div>
+    <div class="stat">
+        <h2>500+</h2>
+        <p>Trends Analyzed Daily</p>
+    </div>
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>Auto Posting</p>
+    </div>
+</div>
+
+<div class="features" id="features">
+    <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Trend Analysis</h3>
+        <p>Real-time analysis of trending hashtags, sounds, and video formats on TikTok.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Recommendations</h3>
+        <p>Get personalized content recommendations based on your niche and audience.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Auto Scheduling</h3>
+        <p>Schedule and automatically post content at the optimal time for maximum reach.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Growth Analytics</h3>
+        <p>Track your follower growth, engagement rate, and content performance over time.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🎵</div>
+        <h3>Sound Trends</h3>
+        <p>Discover trending sounds and music to boost your video visibility.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Trend Alerts</h3>
+        <p>Get instant notifications when new trends appear in your content category.</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 TikTok Trend Agent. All rights reserved.</p>
+    <br>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+</footer>
+
 </body>
 </html>
